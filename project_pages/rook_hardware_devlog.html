@@ -8,27 +8,30 @@
     <hr />
     <h2 align="left">My Vision</h2>
     <h5 align="left">2/19/23</h5>
-    <p>I've been working on the Rook Console on and off for over two years now. It started as a proof of concept
-    <br>laid out on a breadboard and molded into a bunch of individual PCBs jerry-rigged into a jank casing.
-    <br>While my current design "works" in a sense, it's a mess and it has lots of issues. Therefore, I've decided
-    <br>to develop a mainboard for my console. There are many different pros and cons to this decision. Designing a
-    <br>PCB is a challenging task and is something that I have no experience doing. Another con is that it will be
-    <br>a lot more expensive compared to buying cheaper boards that I can easily find on amazon. However, I am going
-    <br>to design my own mainboard, as the benefits outway the cons. While I have no experience designing PCBs, I
-    <br>hope to log my journey as a guide to other developers and hobbyists to help others understand the process.
-    <br>It's certainly a valuable skill and one that I hope to learn through this process. While my final product will
-    <br>be more expensive than buying random premade boards and frankensteining them together, I will be able to make
-    <br>a more compact and reliable console. Soldering a bunch of wires together and trying to shove it all into a
-    <br>small casing is very difficult and so far I haven't done the best job of doing it correctly. My goal is to
-    <br>create a design that makes replicating my build process similar, for both the casing and the hardware.
+    <p>I've been working on the Rook Console on and off for over two years now. It started as a
+    <br>proof of concept laid out on a breadboard and molded into a bunch of individual PCBs
+    <br>jerry-rigged into a jank casing. While my current design "works" in a sense, it's a mess
+    <br>and it has lots of issues. Therefore, I've decided to develop a mainboard for my console.
+    <br>There are many different pros and cons to this decision. Designing a PCB is a challenging
+    <br>task and is something that I have no experience doing. Another con is that it will be a
+    <br>lot more expensive compared to buying cheaper boards that I can easily find on amazon.
+    <br>However, I am going to design my own mainboard, as the benefits outway the cons. While I
+    <br>have no experience designing PCBs, I hope to log my journey as a guide to other developers
+    <br>and hobbyists to help others understand the process. It's certainly a valuable skill and
+    <br>one that I hope to learn through this process. While my final product will be more
+    <br>expensive than buying random premade boards and frankensteining them together, I will be
+    <br>able to make a more compact and reliable console. Soldering a bunch of wires together and
+    <br>trying to shove it all into a small casing is very difficult and so far I haven't done
+    <br>the best job of doing it correctly. My goal is to create a design that makes replicating
+    <br>my build process similar, for both the casing and the hardware.
     <br>
     <br><b>Let's get to it! >:D</b>
     <br></p>
     <hr />
     <h2 align="left">What do it need?</h2>
     <h5 align="left">2/19/23</h5>
-    <p>First off, I need to figure out what all my board needs to have on it. Hmm, maybe some sort of list would be
-    <br>helpful here. <i>insert list here</i>
+    <p>First off, I need to figure out what all my board needs to have on it. Hmm, maybe some
+    <br>sort of list would be helpful here. <i>insert list here</i>
     <br>
     <ul>
       <li>ESP32 module of some sort</li>
@@ -42,29 +45,32 @@
       <li>Display hookup</li>
       <li>Power button connector</li>
     </ul>
-    <i>Oh yeah</i> thats right. Theres one more thing. I need to make a seperate board for the controls. Well, that one
-    <br>would have:
+    <i>Oh yeah</i> thats right. Theres one more thing. I need to make a seperate board for the
+    <br>controls. Well, that one would have:
     <br>
     <ul>
       <li>Four buttons</li>
       <li>Joystick</li>
       <li>Some way to connect to the main board</li>
     </ul>
-    That's probably all of the main components that I'm going to need. Of course there's going to be a lot of
-    <br>work and research that will need to be done before finalizing my component selection though. Annd of course
-    <br>there's probably going to be a power/charge indication LED somewhere and a reset button for the esp32. I'll
-    <br>go into more detail about the parts as I decide what I'm going to use.
+    That's probably all of the main components that I'm going to need. Of course there's going
+    <br>to be a lot of work and research that will need to be done before finalizing my component
+    <br>selection though. Annd of course there's probably going to be a power/charge indication
+    <br>LED somewhere and a reset button for the esp32. I'll go into more detail about the parts
+    <br>as I decide what I'm going to use.
     <br>
     <br><b>Have a good day rest of your day :D</b></p>
     <hr />
     <h2 align="left">PCB Development</h2>
     <h5 align="left">2/19/23</h5>
-    <p>Weeee. I think I've learned how to make pcbs now. I followed <a href="https://www.youtube.com/watch?v=S_p0YV-JlfU" target="_blank">this tutorial video</a>. Massive props to the guy who
-    <br>made it, it was very easy to follow and really helped me understand the design process and the software. I didn't
-    <br>fully go through his tutorial but I do better understand how to use the software now and will be referring back
-    <br>to it for my implimentation of the ESP32 into my board. I'm using EasyEDA and will most likely use JCLPCB to
-    <br>manufacture the board. Here are some screenshots of my crappy unfinished dev board following his tutorial lol,
-    <br>it taught me how to use the software therefore I believe I'm ready to give my own board a crack.
+    <p>Weeee. I think I've learned how to make pcbs now. I followed <a href="https://www.youtube.com/watch?v=S_p0YV-JlfU" target="_blank">this tutorial video</a>. Massive
+    <br>props to the guy who made it, it was very easy to follow and really helped me understand
+    <br>the design process and the software. I didn't fully go through his tutorial but I do
+    <br>better understand how to use the software now and will be referring back to it for my
+    <br>implimentation of the ESP32 into my board. I'm using EasyEDA and will most likely use
+    <br>JCLPCB to manufacture the board. Here are some screenshots of my crappy unfinished dev
+    <br>board following his tutorial lol, it taught me how to use the software therefore I
+    <br>believe I'm ready to give my own board a crack.
     <br>
     <img src="rook_devlog_media/tutorial_schematic.png" alt="schematic">
     <img src="rook_devlog_media/tutorial_pcb_wiring.png" alt="pcb wiring">
