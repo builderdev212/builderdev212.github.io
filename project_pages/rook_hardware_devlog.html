@@ -79,7 +79,79 @@
     <br>
     <br><b>Hehehe, custom board here i come >:D</b></p>
     <hr />
-    <h4 align="center"><a href="../index.html">Home</a></h6>
-	<h4 align="center"><a href="project_pages/about_me.html">About Me</a></h6>
+    <h2 align="left">ESP Module >:(</h2>
+    <h5 align="left">2/19/23</h5>
+    <p>There are sooooo many different ESP32 SoCs to choose from when working on a project like
+    <br>this. Do I want a lot of flash? I do want a lot of PSRAM? Maybe I only want a single
+    <br>core board. Maybe I want a dual core board. Maybe I want a PCB antenna attached to the
+    <br>SoC. Maybe I want to use an external antenna. There's so many different variations of the
+    <br>ESP32. There's even different cores depending on the refresh and make of the board. How
+    <br>on the earth will I ever choose which one to use? Well, let's start with looking at the
+    <br>different series of ESP32s. They are as follow:
+    <ul>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-s2" target="_blank">ESP32-S2</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-s3" target="_blank">ESP32-S3</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-c2" target="_blank">ESP32-C2</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-c3" target="_blank">ESP32-C3</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-c6" target="_blank">ESP32-C6</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32-h2" target="_blank">ESP32-H2</a></li>
+      <li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a></li>
+    </ul>
+    Yikes, thats a lot of different lines to choose from o.0 Well, lets start with something
+    <br>simple. I know that I want to have a dual core SoC, so lets knock out any line that only
+    <br>has a single core. The ESP32-S2 series only has a single 240 MHz core, therefore it isn't
+    <br>going to be helpful for my purposes. The ESP32-C2 series has a single RISC-V based 120 MHz
+    <br>core, therefore it isn't going to be an option either. The ESP32-C3 line has a slightly
+    <br>faster 160 MHz RISC-V based core, however it has only a single core. The ESP32-C6 has only
+    <br>a single core, therefore it also isn't suitable for my needs. The ESP32-H2 series has a
+    <br>lower power 96 MHz core, which also isn't going to be helpful. That leaves me with the
+    <br>ESP32 and the ESP32-S3 lines. The ESP32 series is the original line of the chips. They
+    <br>have both single and dual core configurations, and support 2.4 GHz Wifi and Bluetooth
+    <br>Classic/Bluetooth LE. The ESP32-S3 is a Xtensa LX7 dual core processor that runs at 240
+    <br>MHz, and has 2.4 GHz Wifi as well as well as Bluetooth 5. The newer cores and newer
+    <br>bluetooth revison is a big win in the case of the ESP32-S3 line. Another benifit of the
+    <br>newer line is the higher flash and PSRAM capacities it has to offer. This will be very
+    <br>important when it comes to programming the game engine for the console. Since there isn't
+    <br>enough SRAM for a proper framebuffer for the display, I use sprites to move things around
+    <br>the display, which is very SRAM and PSRAM intensive, therefore the more available the more
+    <br>I can support on screen at a time. With enough RAM it might even be possible to make a very
+    <br>simplistic framebuffer. Flash is important as it is what I will be storing the game engine
+    <br>and any games on. I've considered having a game interpreter that runs images of games
+    <br>throughthe microcontroller to allow for more games to be stored on external storage, however
+    <br>I am undecided as to how I want to impliment that as of now. So the more flash and RAM
+    <br>available the better. This leaves me with the ESP32-S3 series to work with, which is a much
+    <br>smaller list of possible modules to choose from. They are as follow:
+    <ul>
+      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-1/1U</a></li>
+      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-2_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-2</a></li>
+      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf" target="_blank">ESP32-S3-MINI-1/1U</a></li>
+    </ul>
+    Well hey! Thats not too bad at all. There's only a few options left to choose from. The
+    <br>ESP32-S3-WROOM-1/1U is the best documented of the modules. There's several dev boards
+    <br>based upon this design that I could use as a basis for my board. It supports up to 16MB
+    <br>of flash and up to 8MB of PSRAM. The ESP32-S3-WROOM-2 is very similar to the previous module,
+    <br>however it has 3 less GPIO pins, and can support up to 32MB of flash and 8MB of PSRAM.
+    <br>However, I was unable to find a board with a schematic that used this module, meaning that I
+    <br>would only have espressif's datasheet to make a board off of. That's not something I really
+    <br>want to do, therefore I'm going to cross it off from the list of options. It's also incredibly
+    <br>expensive, costing over $18 USD, where as the previous model's top spec costs just over $5 USD.
+    <br>The ESP32-S3-MINI-1/1U supports up to 8MB of flash and 2MB of PSRAM in an external package.
+    <br>It has 3 more GPIO pins than the first module. However, it's also getting crossed off of the
+    <br>list, leaving me with only the ESP32-S3-WROOM-1/1U module. The difference between the 1 and
+    <br>the 1U variant is that the 1 variant has a PCB antenna, while the 1U variant has an external
+    <br>antenna connector. For my purposes, I'd like to use a PCB antenna, so I'm going to use the
+    <br>ESP32-S3-WROOM-1 module for my project. But wait! There's more! There's different variants of
+    <br>the individual module. Yuck. So many different things to take into account. However, this
+    <br>choice is quite easy. The last portion to decide is how much flash and PSRAM I want to have
+    <br>on the module. For my use case, I want as much as possible, so I'm going to use the
+    <br><a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a> module with 16MB of flash and 8MB of PSRAM.
+    <br>
+    <br><b>Say ESP-S3-WROOM-1-N16R8 three times fast. You can't >:P</b></p>
+    <h5 align="left">Important Links</h5>
+    <p><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP-S3-WROOM-1 Datasheet</a>
+    <br><a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a></p>
+    <hr />
+    <h4 align="center"><a href="../index.html">Home</a></h4>
+	<h4 align="center"><a href="project_pages/about_me.html">About Me</a></h4>
 </body>
 </html>
