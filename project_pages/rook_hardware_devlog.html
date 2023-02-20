@@ -156,6 +156,31 @@
     <p><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP-S3-WROOM-1 Datasheet</a>
     <br><a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a></p>
     <hr />
+    <h2 align="left">Existing ESP32 Dev Boards</h2>
+    <h5 align="left">2/20/23</h5>
+    <p>Alright. I've decided on what ESP32 module I'm going to use. Now I have to design
+    <br>the rest of the board around it. Just like the video tutorial that I followed to
+    <br>learn how to use EasyEDA, I'm going to be taking a look at some dev boards that
+    <br>already exist in order to choose parts and make my schematic. Here's a list of all
+    <br>the different schematics I found that use the ESP32-S3-WROOM-1(the flash and PSRAM
+    <br>doesn't matter in this case because the pinout will stay the same.):
+    <ul>
+      <li><a href="https://github.com/espressif/esp-box/blob/master/hardware/esp32_s3_box_v2.5/schematic/SCH_ESP32-S3-BOX_V2.5_20211011.pdf" target="_blank">ESP32_s3_box_v2.5</a></li>
+      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-EYE-MB_20211201_V2.2.pdf" target="_blank">ESP32-S3-EYE-MB</a></li>
+      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-Korvo-1_V6_20211201.pdf" target="_blank">ESP32-S3-Korvo-1_V6</a></li>
+      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-DevKitC-1_V1.1_20221130.pdf" target="_blank">ESP32-S3-DevKitC-1</a></li>
+      <li><a href="https://superpower.github.io/docs/uc/lowcost/schematics/" target="_blank">funny schematics that may or may not be useful</a></li>
+      <li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-schematic.pdf" target="_blank">wrong SoC but interesting battery circuit</a></li>
+      <li><a href="https://github.com/EzSBC/ESP32_Bat_Pro/blob/main/ESP32_Bat_Pro_Sch.pdf" target="_blank">goofy battery hookup with different uart chip</a></li>
+      <li><a href="https://makergram.com/community/topic/50/schematic-design-for-esp32/18" target="_blank">power switching circuit? :o</a></li>
+      <li><a href="https://github.com/OLIMEX/ESP32-DevKit-LiPo/blob/master/HARDWARE/ESP32-DevKit-LiPo-Rev.B/ESP32-DevKit-Lipo_Rev_B.pdf" target="_blank">funny battery psu part</a></li>
+      <li><a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/zwyuf7/review_request_schematic_only_battery_powered/" target="_blank">pretty informative reddit thread</a></li>
+    </ul>
+    Hrmph. That's a lot of schematics and funny random info. I think my next update will
+    <br>be a schematic update with the main chips chosen for power.
+    <br>
+    <br><b>idk who decided to do this but thats a lot of schematics</b></p>
+    <hr />
     <h4 align="center"><a href="../index.html">Home</a></h4>
 	<h4 align="center"><a href="project_pages/about_me.html">About Me</a></h4>
 </body>
