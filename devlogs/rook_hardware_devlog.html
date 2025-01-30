@@ -1,221 +1,221 @@
 <html>
+
 <head>
-	<link rel="stylesheet" href="../style/page_style.css">
-  <title>Hardware Devlog</title>
+    <link rel="stylesheet" href="../style/page_style.css">
+    <title>Hardware Devlog</title>
 </head>
+
 <body>
-  <h1>Rook Console Hardware!</h1>
-    <hr />
-    <h2 align="left">My Vision</h2>
-    <h5 align="left">2/19/23</h5>
-    <p>I've been working on the Rook Console on and off for over two years now. It started as a
-    <br>proof of concept laid out on a breadboard and molded into a bunch of individual PCBs
-    <br>jerry-rigged into a jank casing. While my current design "works" in a sense, it's a mess
-    <br>and it has lots of issues. Therefore, I've decided to develop a mainboard for my console.
-    <br>There are many different pros and cons to this decision. Designing a PCB is a challenging
-    <br>task and is something that I have no experience doing. Another con is that it will be a
-    <br>lot more expensive compared to buying cheaper boards that I can easily find on amazon.
-    <br>However, I am going to design my own mainboard, as the benefits outway the cons. While I
-    <br>have no experience designing PCBs, I hope to log my journey as a guide to other developers
-    <br>and hobbyists to help others understand the process. It's certainly a valuable skill and
-    <br>one that I hope to learn through this process. While my final product will be more
-    <br>expensive than buying random premade boards and frankensteining them together, I will be
-    <br>able to make a more compact and reliable console. Soldering a bunch of wires together and
-    <br>trying to shove it all into a small casing is very difficult and so far I haven't done
-    <br>the best job of doing it correctly. My goal is to create a design that makes replicating
-    <br>my build process similar, for both the casing and the hardware.
-    <br>
-    <br><b>Let's get to it! >:D</b>
-    <br></p>
-    <hr />
-    <h2 align="left">What do it need?</h2>
-    <h5 align="left">2/19/23</h5>
-    <p>First off, I need to figure out what all my board needs to have on it. Hmm, maybe some
-    <br>sort of list would be helpful here. <i>insert list here</i>
-    <br>
-    <ul>
-      <li>ESP32 module of some sort</li>
-      <li>USB to UART chip</li>
-      <li>USB C port</li>
-      <li>Power delivery circuit of some sort</li>
-      <li>Battery hookup</li>
-      <li>Battery protection circuit</li>
-      <li>DAC for audio</li>
-      <li>SD card reader</li>
-      <li>Display hookup</li>
-      <li>Power button connector</li>
-    </ul>
-    <i>Oh yeah</i> thats right. Theres one more thing. I need to make a seperate board for the
-    <br>controls. Well, that one would have:
-    <br>
-    <ul>
-      <li>Four buttons</li>
-      <li>Joystick</li>
-      <li>Some way to connect to the main board</li>
-    </ul>
-    That's probably all of the main components that I'm going to need. Of course there's going
-    <br>to be a lot of work and research that will need to be done before finalizing my component
-    <br>selection though. Annd of course there's probably going to be a power/charge indication
-    <br>LED somewhere and a reset button for the esp32. I'll go into more detail about the parts
-    <br>as I decide what I'm going to use.
-    <br>
-    <br><b>Have a good day rest of your day :D</b></p>
-    <hr />
-    <h2 align="left">PCB Development</h2>
-    <h5 align="left">2/19/23</h5>
-    <p>Weeee. I think I've learned how to make pcbs now. I followed <a href="https://www.youtube.com/watch?v=S_p0YV-JlfU" target="_blank">this tutorial video</a>. Massive
-    <br>props to the guy who made it, it was very easy to follow and really helped me understand
-    <br>the design process and the software. I didn't fully go through his tutorial but I do
-    <br>better understand how to use the software now and will be referring back to it for my
-    <br>implimentation of the ESP32 into my board. I'm using EasyEDA and will most likely use
-    <br>JCLPCB to manufacture the board. Here are some screenshots of my crappy unfinished dev
-    <br>board following his tutorial lol, it taught me how to use the software therefore I
-    <br>believe I'm ready to give my own board a crack.
-    <br>
-    <img src="rook_devlog_media/tutorial_schematic.png" alt="schematic">
-    <img src="rook_devlog_media/tutorial_pcb_wiring.png" alt="pcb wiring">
-    <img src="rook_devlog_media/tutorial_pcb.png" alt="pcb">
-    <br>yes i know i didn't fully finish it. nu shoot pls :(
-    <br>
-    <br><b>Hehehe, custom board here i come >:D</b></p>
-    <hr />
-    <h2 align="left">ESP Module >:(</h2>
-    <h5 align="left">2/19/23</h5>
-    <p>There are sooooo many different ESP32 SoCs to choose from when working on a project
-    <br>like this. Do I want a lot of flash? I do want a lot of PSRAM? Maybe I only want a
-    <br>single core board. Maybe I want a dual core board. Maybe I want a PCB antenna
-    <br>attached to the SoC. Maybe I want to use an external antenna. There's so many
-    <br>different variations of the ESP32. There's even different cores depending on the
-    <br>refresh and make of the board. How on the earth will I ever choose which one to
-    <br>use? Well, let's start with looking at the different series of ESP32s.
-    <br>They are as follow:
-    <ul>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-s2" target="_blank">ESP32-S2</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-s3" target="_blank">ESP32-S3</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-c2" target="_blank">ESP32-C2</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-c3" target="_blank">ESP32-C3</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-c6" target="_blank">ESP32-C6</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32-h2" target="_blank">ESP32-H2</a></li>
-      <li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a></li>
-    </ul>
-    Yikes, thats a lot of different lines to choose from o.0 Well, lets start with something
-    <br>simple. I know that I want to have a dual core SoC, so lets knock out any line that only
-    <br>has a single core. The ESP32-S2 series only has a single 240 MHz core, therefore it isn't
-    <br>going to be helpful for my purposes. The ESP32-C2 series has a single RISC-V based 120
-    <br>MHz core, therefore it isn't going to be an option either. The ESP32-C3 line has a
-    <br>slightly faster 160 MHz RISC-V based core, however it has only a single core. The
-    <br>ESP32-C6 has only a single core, therefore it also isn't suitable for my needs. The
-    <br>ESP32-H2 series has a lower power 96 MHz core, which also isn't going to be helpful.
-    <br>That leaves me with the ESP32 and the ESP32-S3 lines. The ESP32 series is the original
-    <br>line of the chips. They have both single and dual core configurations, and support 2.4
-    <br>GHz Wifi and Bluetooth Classic/Bluetooth LE. The ESP32-S3 is a Xtensa LX7 dual core
-    <br>processor that runs at 240 MHz, and has 2.4 GHz Wifi as well as well as Bluetooth 5.
-    <br>The newer cores and newer bluetooth revison is a big win in the case of the ESP32-S3
-    <br>line. Another benifit of the newer line is the higher flash and PSRAM capacities it has
-    <br>to offer. This will be very important when it comes to programming the game engine for
-    <br>the console. Since there isn't enough SRAM for a proper framebuffer for the display, I
-    <br>use sprites to move things around the display, which is very SRAM and PSRAM intensive,
-    <br>therefore the more available the more I can support on screen at a time. With enough RAM
-    <br>it might even be possible to make a very simplistic framebuffer. Flash is important as
-    <br>it is what I will be storing the game engine and any games on. I've considered having
-    <br>a game interpreter that runs images of games through the microcontroller to allow for
-    <br>more games to be stored on external storage, however I am undecided as to how I want to
-    <br>impliment that as of now. So the more flash and RAM available the better. This leaves me
-    <br> with the ESP32-S3 series to work with, which is a much smaller list of possible modules
-    <br>to choose from. They are as follow:
-    <ul>
-      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-1/1U</a></li>
-      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-2_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-2</a></li>
-      <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf" target="_blank">ESP32-S3-MINI-1/1U</a></li>
-    </ul>
-    Well hey! Thats not too bad at all. There's only a few options left to choose from. The
-    <br>ESP32-S3-WROOM-1/1U is the best documented of the modules. There's several dev
-    <br>boards based upon this design that I could use as a basis for my board. It
-    <br>supports up to 16MB of flash and up to 8MB of PSRAM. The ESP32-S3-WROOM-2 is
-    <br>very similar to the previous module, however it has 3 less GPIO pins, and can
-    <br>support up to 32MB of flash and 8MB of PSRAM. However, I was unable to find a
-    <br>board with a schematic that used this module, meaning that I would only have
-    <br>espressif's datasheet to make a board off of. That's not something I really
-    <br>want to do, therefore I'm going to cross it off from the list of options. It's
-    <br>also incredibly expensive, costing over $18 USD, where as the previous model's
-    <br>top spec costs just over $5 USD. The ESP32-S3-MINI-1/1U supports up to 8MB of
-    <br>flash and 2MB of PSRAM in an external package. It has 3 more GPIO pins than the
-    <br>first module. However, it's also getting crossed off of the list, leaving me with
-    <br>only the ESP32-S3-WROOM-1/1U module. The difference between the 1 and the 1U
-    <br>variant is that the 1 variant has a PCB antenna, while the 1U variant has an
-    <br>external antenna connector. For my purposes, I'd like to use a PCB antenna, so
-    <br>I'm going to use the ESP32-S3-WROOM-1 module for my project. But wait! There's
-    <br>more! There's different variants of the individual module. Yuck. So many different
-    <br>things to take into account. However, this choice is quite easy. The last portion
-    <br>to decide is how much flash and PSRAM I want to have on the module. For my use case,
-    <br>I want as much as possible, so I'm going to use the <a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a>
-    <br>module with 16MB of flash and 8MB of PSRAM.
-    <br>
-    <br><b>Say ESP32-S3-WROOM-1-N16R8 three times fast. You can't >:P</b></p>
-    <h5 align="left">Important Links</h5>
-    <p><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP-S3-WROOM-1 Datasheet</a>
-    <br><a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a></p>
-    <hr />
-    <h2 align="left">Existing ESP32 Dev Boards</h2>
-    <h5 align="left">2/20/23</h5>
-    <p>Alright. I've decided on what ESP32 module I'm going to use. Now I have to design
-    <br>the rest of the board around it. Just like the video tutorial that I followed to
-    <br>learn how to use EasyEDA, I'm going to be taking a look at some dev boards that
-    <br>already exist in order to choose parts and make my schematic. Here's a list of all
-    <br>the different schematics I found that use the ESP32-S3-WROOM-1(the flash and PSRAM
-    <br>doesn't matter in this case because the pinout will stay the same.):
-    <ul>
-      <li><a href="https://github.com/espressif/esp-box/blob/master/hardware/esp32_s3_box_v2.5/schematic/SCH_ESP32-S3-BOX_V2.5_20211011.pdf" target="_blank">ESP32_s3_box_v2.5</a></li>
-      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-EYE-MB_20211201_V2.2.pdf" target="_blank">ESP32-S3-EYE-MB</a></li>
-      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-Korvo-1_V6_20211201.pdf" target="_blank">ESP32-S3-Korvo-1_V6</a></li>
-      <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-DevKitC-1_V1.1_20221130.pdf" target="_blank">ESP32-S3-DevKitC-1</a></li>
-      <li><a href="https://superpower.github.io/docs/uc/lowcost/schematics/" target="_blank">funny schematics that may or may not be useful</a></li>
-      <li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-schematic.pdf" target="_blank">wrong SoC but interesting battery circuit</a></li>
-      <li><a href="https://github.com/EzSBC/ESP32_Bat_Pro/blob/main/ESP32_Bat_Pro_Sch.pdf" target="_blank">goofy battery hookup with different uart chip</a></li>
-      <li><a href="https://makergram.com/community/topic/50/schematic-design-for-esp32/18" target="_blank">power switching circuit? :o</a></li>
-      <li><a href="https://github.com/OLIMEX/ESP32-DevKit-LiPo/blob/master/HARDWARE/ESP32-DevKit-LiPo-Rev.B/ESP32-DevKit-Lipo_Rev_B.pdf" target="_blank">funny battery psu part</a></li>
-      <li><a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/zwyuf7/review_request_schematic_only_battery_powered/" target="_blank">pretty informative reddit thread</a></li>
-    </ul>
-    Hrmph. That's a lot of schematics and funny random info. I think my next update will
-    <br>be a schematic update with the main chips chosen for power.
-    <br>
-    <br><b>idk who decided to do this but thats a lot of schematics</b></p>
-    <hr />
-    <h2 align="left">No im not dead</h2>
-    <h5 align="left">5/5/23</h5>
-    <img src="rook_devlog_media/wip_schem.png" alt="schematic">
-    <hr />
-    <h2 align="left">Finished PCB (untested)</h2>
-    <h5 align="left">5/23/23</h5>
-    <p>I've just ordered my board and will update this again when I test it. A huge
-    <br>thank you to the folks over on reddit who helped me get this figured out.
-    <br>see <a href="https://www.reddit.com/r/AskElectronics/comments/12j4zuy/sanity_check_on_esp32_poweruart_schematic/" target="_blank">this post</a> for the first schematic review and <a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/13i8z5v/schematic_review_request_esp32s3based_board/" target="_blank">this post</a> for the second
-    <br>schematic review. <a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/13ngcpa/review_request_esp32s3_handheld_console_dev_board/" target="_blank">This post</a> is the pcb review itself. Below is my final
-    <br>design, and I will update this once again when I recieve the board.
-    <br>
-    <img src="rook_devlog_media/schematic.png" alt="schematic">
-    <img src="rook_devlog_media/pcb_top.png" alt="pcb top">
-    <img src="rook_devlog_media/pcb_bottom.png" alt="pcb bottom">
-    <img src="rook_devlog_media/assemble_top.png" alt="assembly top">
-    <img src="rook_devlog_media/assemble_bottom.png" alt="assembly bottom">
-    </p>
-    <hr />
-    <h2 align="left">Finished PCB (tested!)</h2>
-    <h5 align="left">1/22/24</h5>
-    <p>It's been a while since I last updated this devlog. I'm going to call this
-    <br>"finished" for now. The board does work! Every part of the board works to
-    <br>my knowledge. However there are some caviats. I managed to flip my rx and
-    <br>tx on my usb port, however with a custom usb cable this isn't a problem for
-    <br>my current development. I'm going to split off into a few different devlogs
-    <br>for different parts of the project code. I'm going to end this off with
-    <br>pictures of what the current board looks like. My first PCB has been made,
-    <br>and works.
-    <br>
-    <img src="rook_devlog_media/final_board_front.JPG" alt="board top">
-    <img src="rook_devlog_media/final_board_back.JPG" alt="board back">
-    </p>
-    <hr />
-    <h4 align="center"><a href="../index.html">Home</a></h4>
-	<h4 align="center"><a href="../info/about_me.html">About Me</a></h4>
+    <div class="row">
+        <div class="header">
+            <h1>Rook Console Hardware!</h1>
+        </div>
+        <div class="card">
+            <h2>My Vision</h2>
+            <h5>2/19/23</h5>
+            <p>I've been working on the Rook Console on and off for over two years now. It started as a
+                proof of concept laid out on a breadboard and molded into a bunch of individual PCBs
+                jerry-rigged into a jank casing. While my current design "works" in a sense, it's a mess
+                and it has lots of issues. Therefore, I've decided to develop a mainboard for my console.
+                There are many different pros and cons to this decision. Designing a PCB is a challenging
+                task and is something that I have no experience doing. Another con is that it will be a
+                lot more expensive compared to buying cheaper boards that I can easily find on amazon.
+                However, I am going to design my own mainboard, as the benefits outway the cons. While I
+                have no experience designing PCBs, I hope to log my journey as a guide to other developers
+                and hobbyists to help others understand the process. It's certainly a valuable skill and
+                one that I hope to learn through this process. While my final product will be more
+                expensive than buying random premade boards and frankensteining them together, I will be
+                able to make a more compact and reliable console. Soldering a bunch of wires together and
+                trying to shove it all into a small casing is very difficult and so far I haven't done
+                the best job of doing it correctly. My goal is to create a design that makes replicating
+                my build process similar, for both the casing and the hardware. <b>Let's get to it! :D</b>
+            </p>
+            <hr />
+            <h2 align="left">What do it need?</h2>
+            <h5 align="left">2/19/23</h5>
+            <p>First off, I need to figure out what all my board needs to have on it. Hmm, maybe some
+                sort of list would be helpful here.
+                <ul>
+                    <li>ESP32 module of some sort</li>
+                    <li>USB to UART chip</li>
+                    <li>USB C port</li>
+                    <li>Power delivery circuit of some sort</li>
+                    <li>Battery hookup</li>
+                    <li>Battery protection circuit</li>
+                    <li>DAC for audio</li>
+                    <li>SD card reader</li>
+                    <li>Display hookup</li>
+                    <li>Power button connector</li>
+                </ul>
+                <i>Oh yeah</i> thats right. Theres one more thing. I need to make a seperate board for the
+                controls. Well, that one would have:
+                <ul>
+                    <li>Four buttons</li>
+                    <li>Joystick</li>
+                    <li>Some way to connect to the main board</li>
+                </ul>
+                That's probably all of the main components that I'm going to need. Of course there's going
+                to be a lot of work and research that will need to be done before finalizing my component
+                selection though. Annd of course there's probably going to be a power/charge indication
+                LED somewhere and a reset button for the esp32. I'll go into more detail about the parts
+                as I decide what I'm going to use. <b>Have a good day rest of your day :D</b>
+            </p>
+            <hr />
+            <h2 align="left">PCB Development</h2>
+            <h5 align="left">2/19/23</h5>
+            <p>Weeee. I think I've learned how to make pcbs now. I followed <a href="https://www.youtube.com/watch?v=S_p0YV-JlfU" target="_blank">this tutorial video</a>. Massive
+                props to the guy who made it, it was very easy to follow and really helped me understand
+                the design process and the software. I didn't fully go through his tutorial but I do
+                better understand how to use the software now and will be referring back to it for my
+                implimentation of the ESP32 into my board. I'm using EasyEDA and will most likely use
+                JCLPCB to manufacture the board. Here are some screenshots of my crappy unfinished dev
+                board following his tutorial lol, it taught me how to use the software therefore I
+                believe I'm ready to give my own board a crack.
+                <img src="rook_devlog_media/tutorial_schematic.png" alt="schematic">
+                <img src="rook_devlog_media/tutorial_pcb_wiring.png" alt="pcb wiring">
+                <img src="rook_devlog_media/tutorial_pcb.png" alt="pcb">
+                Yes i know i didn't fully finish it. I learned how to use the tool, which was my goal. <b>Hehehe, custom board here i come >:D</b>
+            </p>
+            <hr />
+            <h2 align="left">ESP Module >:(</h2>
+            <h5 align="left">2/19/23</h5>
+            <p>There are sooooo many different ESP32 SoCs to choose from when working on a project
+                like this. Do I want a lot of flash? I do want a lot of PSRAM? Maybe I only want a
+                single core board. Maybe I want a dual core board. Maybe I want a PCB antenna
+                attached to the SoC. Maybe I want to use an external antenna. There's so many
+                different variations of the ESP32. There's even different cores depending on the
+                refresh and make of the board. How on the earth will I ever choose which one to
+                use? Well, let's start with looking at the different series of ESP32s.
+                They are as follow:
+                <ul>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-s2" target="_blank">ESP32-S2</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-s3" target="_blank">ESP32-S3</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-c2" target="_blank">ESP32-C2</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-c3" target="_blank">ESP32-C3</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-c6" target="_blank">ESP32-C6</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32-h2" target="_blank">ESP32-H2</a></li>
+                    <li><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank">ESP32</a></li>
+                </ul>
+                Yikes, thats a lot of different lines to choose from o.0 Well, lets start with something
+                simple. I know that I want to have a dual core SoC, so lets knock out any line that only
+                has a single core. The ESP32-S2 series only has a single 240 MHz core, therefore it isn't
+                going to be helpful for my purposes. The ESP32-C2 series has a single RISC-V based 120
+                MHz core, therefore it isn't going to be an option either. The ESP32-C3 line has a
+                slightly faster 160 MHz RISC-V based core, however it has only a single core. The
+                ESP32-C6 has only a single core, therefore it also isn't suitable for my needs. The
+                ESP32-H2 series has a lower power 96 MHz core, which also isn't going to be helpful.
+                That leaves me with the ESP32 and the ESP32-S3 lines. The ESP32 series is the original
+                line of the chips. They have both single and dual core configurations, and support 2.4
+                GHz Wifi and Bluetooth Classic/Bluetooth LE. The ESP32-S3 is a Xtensa LX7 dual core
+                processor that runs at 240 MHz, and has 2.4 GHz Wifi as
+                mes on. I've considered having
+                a game interpreter that runs images of games through the microcontroller to allow for
+                more games to be stored on external storage, however I am undecided as to how I want to
+                impliment that as of now. So the more flash and RAM available the better. This leaves me
+                with the ESP32-S3 series to work with, which is a much smaller list of possible modules
+                to choose from. They are as follow:
+                <ul>
+                    <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-1/1U</a></li>
+                    <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-2_datasheet_en.pdf" target="_blank">ESP32-S3-WROOM-2</a></li>
+                    <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-mini-1_mini-1u_datasheet_en.pdf" target="_blank">ESP32-S3-MINI-1/1U</a></li>
+                </ul>
+                Well hey! Thats not too bad at all. There's only a few options left to choose from. The
+                ESP32-S3-WROOM-1/1U is the best documented of the modules. There's several dev
+                boards based upon this design that I could use as a basis for my board. It
+                supports up to 16MB of flash and up to 8MB of PSRAM. The ESP32-S3-WROOM-2 is
+                very similar to the previous module, however it has 3 less GPIO pins, and can
+                support up to 32MB of flash and 8MB of PSRAM. However, I was unable to find a
+                board with a schematic that used this module, meaning that I would only have
+                espressif's datasheet to make a board off of. That's not something I really
+                want to do, therefore I'm going to cross it off from the list of options. It's
+                also incredibly expensive, costing over $18 USD, where as the previous model's
+                top spec costs just over $5 USD. The ESP32-S3-MINI-1/1U supports up to 8MB of
+                flash and 2MB of PSRAM in an external package. It has 3 more GPIO pins than the
+                first module. However, it's also getting crossed off of the list, leaving me with
+                only the ESP32-S3-WROOM-1/1U module. The difference between the 1 and the 1U
+                variant is that the 1 variant has a PCB antenna, while the 1U variant has an
+                external antenna connector. For my purposes, I'd like to use a PCB antenna, so
+                I'm going to use the ESP32-S3-WROOM-1 module for my project. But wait! There's
+                more! There's different variants of the individual module. Yuck. So many different
+                things to take into account. However, this choice is quite easy. The last portion
+                to decide is how much flash and PSRAM I want to have on the module. For my use case,
+                I want as much as possible, so I'm going to use the <a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a>
+                module with 16MB of flash and 8MB of PSRAM. <b>Say ESP32-S3-WROOM-1-N16R8 three times fast. You can't >:P</b></p>
+            <h5 align="left">Important Links</h5>
+            <p><a href="https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf" target="_blank">ESP-S3-WROOM-1 Datasheet</a>
+                <a href="https://www.lcsc.com/product-detail/WiFi-Modules_Espressif-Systems-ESP32-S3-WROOM-1-N16R8_C2913202.html" target="_blank">ESP32-S3-WROOM-1-N16R8</a>
+            </p>
+            <hr />
+            <h2 align="left">Existing ESP32 Dev Boards</h2>
+            <h5 align="left">2/20/23</h5>
+            <p>Alright. I've decided on what ESP32 module I'm going to use. Now I have to design
+                the rest of the board around it. Just like the video tutorial that I followed to
+                learn how to use EasyEDA, I'm going to be taking a look at some dev boards that
+                already exist in order to choose parts and make my schematic. Here's a list of all
+                the different schematics I found that use the ESP32-S3-WROOM-1(the flash and PSRAM
+                doesn't matter in this case because the pinout will stay the same.):
+                <ul>
+                    <li><a href="https://github.com/espressif/esp-box/blob/master/hardware/esp32_s3_box_v2.5/schematic/SCH_ESP32-S3-BOX_V2.5_20211011.pdf" target="_blank">ESP32_s3_box_v2.5</a></li>
+                    <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-EYE-MB_20211201_V2.2.pdf" target="_blank">ESP32-S3-EYE-MB</a></li>
+                    <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-Korvo-1_V6_20211201.pdf" target="_blank">ESP32-S3-Korvo-1_V6</a></li>
+                    <li><a href="https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-DevKitC-1_V1.1_20221130.pdf" target="_blank">ESP32-S3-DevKitC-1</a></li>
+                    <li><a href="https://superpower.github.io/docs/uc/lowcost/schematics/" target="_blank">funny schematics
+                            that
+                            may or
+                            may not be useful</a></li>
+                    <li><a href="https://cdn.sparkfun.com/assets/learn_tutorials/5/0/7/esp32-thing-schematic.pdf" target="_blank">wrong
+                            SoC but interesting battery circuit</a></li>
+                    <li><a href="https://github.com/EzSBC/ESP32_Bat_Pro/blob/main/ESP32_Bat_Pro_Sch.pdf" target="_blank">goofy
+                            battery
+                            hookup with different uart chip</a></li>
+                    <li><a href="https://makergram.com/community/topic/50/schematic-design-for-esp32/18" target="_blank">power
+                            switching
+                            circuit? :o</a></li>
+                    <li><a href="https://github.com/OLIMEX/ESP32-DevKit-LiPo/blob/master/HARDWARE/ESP32-DevKit-LiPo-Rev.B/ESP32-DevKit-Lipo_Rev_B.pdf" target="_blank">funny battery psu part</a></li>
+                    <li><a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/zwyuf7/review_request_schematic_only_battery_powered/" target="_blank">pretty informative reddit thread</a></li>
+                </ul>
+                Hrmph. That's a lot of schematics and funny random info. I think my next update will
+                be a schematic update with the main chips chosen for power.
+                <b>idk who decided to do this but thats a lot of schematics</b></p>
+            <hr />
+            <h2 align="left">No im not dead</h2>
+            <h5 align="left">5/5/23</h5>
+            <img src="rook_devlog_media/wip_schem.png" alt="schematic">
+            <hr />
+            <h2 align="left">Finished PCB (untested)</h2>
+            <h5 align="left">5/23/23</h5>
+            <p>I've just ordered my board and will update this again when I test it. A huge
+                thank you to the folks over on reddit who helped me get this figured out.
+                see <a href="https://www.reddit.com/r/AskElectronics/comments/12j4zuy/sanity_check_on_esp32_poweruart_schematic/" target="_blank">this post</a> for the first schematic review and <a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/13i8z5v/schematic_review_request_esp32s3based_board/" target="_blank">this post</a> for the second
+                schematic review. <a href="https://www.reddit.com/r/PrintedCircuitBoard/comments/13ngcpa/review_request_esp32s3_handheld_console_dev_board/" target="_blank">This post</a> is the pcb review itself. Below is my final
+                design, and I will update this once again when I recieve the board.
+
+                <img src="rook_devlog_media/schematic.png" alt="schematic">
+                <img src="rook_devlog_media/pcb_top.png" alt="pcb top">
+                <img src="rook_devlog_media/pcb_bottom.png" alt="pcb bottom">
+                <img src="rook_devlog_media/assemble_top.png" alt="assembly top">
+                <img src="rook_devlog_media/assemble_bottom.png" alt="assembly bottom">
+            </p>
+            <hr />
+            <h2 align="left">Finished PCB (tested!)</h2>
+            <h5 align="left">1/22/24</h5>
+            <p>It's been a while since I last updated this devlog. I'm going to call this
+                "finished" for now. The board does work! Every part of the board works to
+                my knowledge. However there are some caviats. I managed to flip my rx and
+                tx on my usb port, however with a custom usb cable this isn't a problem for
+                my current development. I'm going to split off into a few different devlogs
+                for different parts of the project code. I'm going to end this off with
+                pictures of what the current board looks like. My first PCB has been made,
+                and works.
+                <img src="rook_devlog_media/final_board_front.JPG" alt="board top">
+                <img src="rook_devlog_media/final_board_back.JPG" alt="board back">
+            </p>
+        </div>
+        <div class="footer">
+            <h4><a href="../index.html">Home</a></h4>
+            <h4><a href="../info/about_me.html">About Me</a></h4>
+        </div>
+    </div>
 </body>
+
 </html>
